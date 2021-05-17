@@ -72,6 +72,7 @@ typedef unsigned int uint;
 #endif
 #elif defined __vita__
 #define RETRO_PLATFORM (RETRO_VITA)
+#include "std_filesystem.h"
 #else
 #define RETRO_PLATFORM (RETRO_WIN) // Default
 #endif
@@ -80,6 +81,7 @@ typedef unsigned int uint;
 #define BASE_PATH            "ux0:data/SonicCD/"
 #define DEFAULT_SCREEN_XSIZE 480
 #define DEFAULT_FULLSCREEN   true
+#define RETRO_DEFAULTSCALINGMODE 1 // use integer scaling
 #elif RETRO_PLATFORM == RETRO_UWP
 #define BASE_PATH            ""
 #define DEFAULT_SCREEN_XSIZE 424

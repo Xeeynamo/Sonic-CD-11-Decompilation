@@ -32,7 +32,7 @@ set(VITA_VERSION  "01.00")
 ## Flags and includes for building
 # Note that we make sure not to overwrite previous flags
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -O3 -fsigned-char -fno-lto")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -O3 -fsigned-char -fno-lto -fno-rtti -fno-exceptions")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -O3 -fsigned-char -fno-lto -fno-rtti -fexceptions")
 # Optional. You can specify more param.sfo flags this way.
 set(VITA_MKSFOEX_FLAGS "${VITA_MKSFOEX_FLAGS} -d PARENTAL_LEVEL=1")
 
@@ -49,31 +49,10 @@ link_directories(
 )
 
 ## Build and link
-# Add all the files needed to compile here
+file(GLOB_RECURSE SOURCES ../RSDKv3/*.cpp)
 add_executable(${PROJECT_NAME}
-    ../dependencies/all/theoraplay/theoraplay.c
-    ../SonicCDDecomp/Animation.cpp
-    ../SonicCDDecomp/Audio.cpp
-    ../SonicCDDecomp/Collision.cpp
-    ../SonicCDDecomp/Debug.cpp
-    ../SonicCDDecomp/Drawing.cpp
-    ../SonicCDDecomp/Ini.cpp
-    ../SonicCDDecomp/Input.cpp
-    ../SonicCDDecomp/Math.cpp
-    ../SonicCDDecomp/Object.cpp
-    ../SonicCDDecomp/Palette.cpp
-    ../SonicCDDecomp/Player.cpp
-    ../SonicCDDecomp/Reader.cpp
-    ../SonicCDDecomp/RetroEngine.cpp
-    ../SonicCDDecomp/Scene.cpp
-    ../SonicCDDecomp/Scene3D.cpp
-    ../SonicCDDecomp/Script.cpp
-    ../SonicCDDecomp/Sprite.cpp
-    ../SonicCDDecomp/String.cpp
-    ../SonicCDDecomp/Text.cpp
-    ../SonicCDDecomp/Userdata.cpp
-    ../SonicCDDecomp/Video.cpp
-    ../SonicCDDecomp/main.cpp
+  ${SOURCES}
+  ../dependencies/all/theoraplay/theoraplay.c
 )
 
 # Library to link to (drop the -l prefix). This will mostly be stubs.
