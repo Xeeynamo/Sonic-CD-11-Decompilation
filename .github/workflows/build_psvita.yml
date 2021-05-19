@@ -30,12 +30,12 @@ jobs:
           make install
       - name: Build Sonic CD
         run: |
-          cd SonicCD.Vita
+          cd RSDKv3.vita
           cmake .
           make
       - name: Upload VPK
         uses: actions/upload-artifact@v2
         with:
           name: SonicCD-vita
-          path: SonicCD.Vita/SonicCD.vpk
+          path: RSDKv3.vita/SonicCD.vpk
           if-no-files-found: error
