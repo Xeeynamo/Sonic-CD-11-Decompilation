@@ -3,25 +3,12 @@
 
 inline void StrCopy(char *dest, const char *src)
 {
-    int i = 0;
-
-    for (; src[i]; ++i) dest[i] = src[i];
-
-    dest[i] = 0;
+    strcpy(dest, src);
 }
 
 inline void StrAdd(char *dest, const char *src)
 {
-    int destStrPos = 0;
-    int srcStrPos  = 0;
-    while (dest[destStrPos]) ++destStrPos;
-    while (true) {
-        if (!src[srcStrPos]) {
-            break;
-        }
-        dest[destStrPos++] = src[srcStrPos++];
-    }
-    dest[destStrPos] = 0;
+    strcpy(dest + strlen(dest), src);
 }
 
 inline bool StrComp(const char *stringA, const char *stringB)
@@ -48,10 +35,7 @@ inline bool StrComp(const char *stringA, const char *stringB)
 
 inline int StrLength(const char *string)
 {
-    int len = 0;
-    for (len = 0; string[len]; len++)
-        ;
-    return len;
+    return strlen(string);
 }
 int FindStringToken(const char *string, const char *token, sbyte stopID);
 
